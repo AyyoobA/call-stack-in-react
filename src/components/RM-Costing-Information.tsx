@@ -1,18 +1,19 @@
+import React from "react";
 import { CustomerOrderDetail, Line } from "../dto/data-types";
 import { extractHeaders, getNestedValue } from "../util/common";
 
-const LineTable = ({ data }: { data: CustomerOrderDetail[] }) => {
+const RMCostingInfo = ({ data }: { data: CustomerOrderDetail[] }) => {
   const dataObj: CustomerOrderDetail = data[0]; // Assuming a single customer order object
   const lines: Line[] = dataObj?.lines || []; // Safely access lines as an array
 
   // Extract headers recursively from the first line object
   const linesHeaders = lines.length > 0 ? extractHeaders(lines[0]) : [];
-
+  
   return (
-    <div>
-      <h1 className="px-2 py-3 text-2xl">Lines</h1>
-      <div className="overflow-scroll border">
-        <div>
+    <div >
+      <h1 className="px-2 py-3 text-2xl">RM Costing Information</h1>
+      <div>
+        <div className="overflow-scroll border">
           <table className="w-full border border-collapse border-gray-300 table-auto">
             <thead>
               <tr>
@@ -47,4 +48,4 @@ const LineTable = ({ data }: { data: CustomerOrderDetail[] }) => {
   );
 };
 
-export default LineTable;
+export default RMCostingInfo;
