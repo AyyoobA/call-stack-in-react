@@ -1,13 +1,13 @@
+import "./index.css";
 import { useState } from "react";
 import { useEffect } from "react";
 import MainTable from "./components/main-table";
-import "./index.css";
 import { CustomerOrderDetail } from "./dto/data-types";
 import { datapayload } from "./data/data";
 import LineTable from "./components/line-table";
-import RMCostingInfo from "./components/RM-Costing-Information";
 import WareHouseInfo from "./components/warehouse-infomation";
 import MetaDataInfomation from "./components/meta-data-information";
+import RMCostingInfo from "./components/RM-Costing-Information";
 
 function App() {
   const dataFromLocal = datapayload;

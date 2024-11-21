@@ -1,7 +1,11 @@
-import { CustomerOrderDetail, RawMaterialCostingInformation, WarehouseInfo } from "../dto/data-types";
+import {
+  CustomerOrderDetail,
+  RawMaterialCostingInformation,
+  WarehouseInfo,
+} from "../dto/data-types";
 
 const WareHouseInfo = ({ data }: { data: CustomerOrderDetail[] }) => {
-    const dataObj: WarehouseInfo = data[0]?.warehouseInfo2;
+  const dataObj: WarehouseInfo = data[0]?.warehouseInfo2;
   if (!dataObj) {
     return <div>No Warehouse Information available</div>;
   }
@@ -9,16 +13,14 @@ const WareHouseInfo = ({ data }: { data: CustomerOrderDetail[] }) => {
   const headers: string[] = Object.keys(dataObj);
   return (
     <div>
-      <h1 className="px-2 py-3 text-2xl">Warehouse Information</h1>
-      <div className="container w-full border h-min">
-        <table className="w-full border border-collapse border-gray-300 table-auto">
+      <h1 className="title_text">Warehouse Information</h1>
+      <div className="table-container">
+        <table className="table-auto">
           <tbody>
             {headers.map((header, index) => (
               <tr key={index}>
-                <td className="px-4 py-2 font-semibold border border-gray-300">
-                  {header}
-                </td>
-                <td className="px-4 py-2 border border-gray-300">
+                <th className="font-semibold">{header}</th>
+                <td>
                   {dataObj[header as keyof WarehouseInfo]?.toString() || ""}
                 </td>
               </tr>
@@ -27,7 +29,7 @@ const WareHouseInfo = ({ data }: { data: CustomerOrderDetail[] }) => {
         </table>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default WareHouseInfo
+export default WareHouseInfo;

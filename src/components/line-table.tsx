@@ -10,38 +10,30 @@ const LineTable = ({ data }: { data: CustomerOrderDetail[] }) => {
 
   return (
     <div>
-      <h1 className="px-2 py-3 text-2xl">Lines</h1>
-      <div className="overflow-scroll border">
-        <div>
-          <table className="w-full border border-collapse border-gray-300 table-auto">
-            <thead>
-              <tr>
-                {linesHeaders.map((header, index) => (
-                  <th
-                    key={index}
-                    className="px-4 py-2 text-left border border-gray-300"
-                  >
-                    {header}
-                  </th>
+      <h1 className="title_text">Lines</h1>
+      <div className="overflow-scroll border shadow-sm">
+        <table className="table-auto">
+          <thead>
+            <tr>
+              {linesHeaders.map((header, index) => (
+                <th key={index} className="text-left">
+                  {header}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {lines.map((line, lineIndex) => (
+              <tr key={lineIndex}>
+                {linesHeaders.map((header, headerIndex) => (
+                  <td key={headerIndex}>
+                    {getNestedValue(line, header)?.toString() || ""}
+                  </td>
                 ))}
               </tr>
-            </thead>
-            <tbody>
-              {lines.map((line, lineIndex) => (
-                <tr key={lineIndex}>
-                  {linesHeaders.map((header, headerIndex) => (
-                    <td
-                      key={headerIndex}
-                      className="px-4 py-2 border border-gray-300"
-                    >
-                      {getNestedValue(line, header)?.toString() || ""}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
