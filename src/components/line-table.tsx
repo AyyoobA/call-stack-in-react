@@ -1,9 +1,16 @@
 import React from "react";
-import { CustomerOrderDetail } from "../dto/data-types";
+import { CustomerOrderDetail, Line } from "../dto/data-types";
 
 const LineTable = ({ data }: { data: CustomerOrderDetail[] }) => {
+  
   const dataObj: any = data[0]; // customer order details single object
-  const lines: string [] = dataObj['lines'][0];
+
+  const lines: Line [] = dataObj['lines']; //  lines Array of objects | need to loop throght it 
+
+  const linesHeaders = lines.length > 0 && lines[0]; //  let's take the first array object to manupilate the table headers array has at least one element
+
+  console.log(linesHeaders) 
+
   let headers : string [] = [] //  array for storing the headers in objects
 
   return (
