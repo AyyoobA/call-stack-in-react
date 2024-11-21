@@ -7,6 +7,7 @@ import { datapayload } from "./data/data";
 import LineTable from "./components/line-table";
 import RMCostingInfo from "./components/RM-Costing-Information";
 import WareHouseInfo from "./components/warehouse-infomation";
+import MetaDataInfomation from "./components/meta-data-information";
 
 function App() {
   const dataFromLocal = datapayload;
@@ -40,6 +41,7 @@ function App() {
       <LineTable data={tableData} />
       <RMCostingInfo  data={tableData}/>
       <WareHouseInfo data={tableData} />
+      <MetaDataInfomation data={tableData} />
     </main>
   );
 }

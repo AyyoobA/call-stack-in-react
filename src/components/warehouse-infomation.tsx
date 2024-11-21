@@ -3,7 +3,7 @@ import { CustomerOrderDetail, RawMaterialCostingInformation, WarehouseInfo } fro
 const WareHouseInfo = ({ data }: { data: CustomerOrderDetail[] }) => {
     const dataObj: WarehouseInfo = data[0]?.warehouseInfo2;
   if (!dataObj) {
-    return <div>No RM Costing Information available</div>;
+    return <div>No Warehouse Information available</div>;
   }
 
   const headers: string[] = Object.keys(dataObj);
