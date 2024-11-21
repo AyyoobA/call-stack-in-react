@@ -1,19 +1,15 @@
-import {
-  CustomerOrderDetail,
-  RawMaterialCostingInformation,
-} from "../dto/data-types";
+import { CustomerOrderDetail, RawMaterialCostingInformation, WarehouseInfo } from "../dto/data-types";
 
-const RMCostingInfo = ({ data }: { data: CustomerOrderDetail[] }) => {
-  const dataObj: RawMaterialCostingInformation = data[0]?.rawMaterialCostingInformation;
+const WareHouseInfo = ({ data }: { data: CustomerOrderDetail[] }) => {
+    const dataObj: WarehouseInfo = data[0]?.warehouseInfo2;
   if (!dataObj) {
     return <div>No RM Costing Information available</div>;
   }
 
   const headers: string[] = Object.keys(dataObj);
-
   return (
     <div>
-      <h1 className="px-2 py-3 text-2xl">RM Costing Information</h1>
+      <h1 className="px-2 py-3 text-2xl">Warehouse Information</h1>
       <div className="container w-full border h-min">
         <table className="w-full border border-collapse border-gray-300 table-auto">
           <tbody>
@@ -23,7 +19,7 @@ const RMCostingInfo = ({ data }: { data: CustomerOrderDetail[] }) => {
                   {header}
                 </td>
                 <td className="px-4 py-2 border border-gray-300">
-                  {dataObj[header as keyof RawMaterialCostingInformation]?.toString() || ""}
+                  {dataObj[header as keyof WarehouseInfo]?.toString() || ""}
                 </td>
               </tr>
             ))}
@@ -31,7 +27,7 @@ const RMCostingInfo = ({ data }: { data: CustomerOrderDetail[] }) => {
         </table>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default RMCostingInfo;
+export default WareHouseInfo

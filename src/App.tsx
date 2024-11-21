@@ -6,6 +6,7 @@ import { CustomerOrderDetail } from "./dto/data-types";
 import { datapayload } from "./data/data";
 import LineTable from "./components/line-table";
 import RMCostingInfo from "./components/RM-Costing-Information";
+import WareHouseInfo from "./components/warehouse-infomation";
 
 function App() {
   const dataFromLocal = datapayload;
@@ -20,7 +21,7 @@ function App() {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const data: CustomerOrderDetail[] = await response.json();
-        setTableData(data); // Update state with fetched data
+        setTableData(data); 
       } catch (error) {
         console.error("Failed to fetch data:", error);
       }
@@ -34,10 +35,11 @@ function App() {
   }
   
   return (
-    <main className="px-10 space-y-10">
+    <main className="px-20 py-10 space-y-10">
       <MainTable data={tableData} />
       <LineTable data={tableData} />
       <RMCostingInfo  data={tableData}/>
+      <WareHouseInfo data={tableData} />
     </main>
   );
 }
