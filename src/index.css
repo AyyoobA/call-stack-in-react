@@ -1,6 +1,16 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@layer tailwind-base, primereact, tailwind-utilities;
+
+/* IMPORTANT: In "styled" mode you must add the PrimeReact Theme here. Do NOT include in "unstyled" mode */
+@import 'primereact/resources/themes/lara-light-blue/theme.css';
+
+@layer tailwind-base {
+  @tailwind base;
+}
+
+@layer tailwind-utilities {
+  @tailwind components;
+  @tailwind utilities;
+}
 
 
 /* Global styles for the tables */
@@ -10,6 +20,10 @@
   
   table {
     @apply w-full border-collapse table-auto;
+  }
+
+  th:not(.main-table) {
+    @apply max-w-36
   }
   
   th,
@@ -40,14 +54,15 @@
   .table-auto td, .table-auto th {
     @apply border border-gray-300;
   }
-  
-  table td:last-child {
-    @apply border-b-0;
-  }
+
   
   /* Optional: For adding a responsive scrollable table */
   @media (max-width: 768px) {
     .table-container {
       @apply block overflow-x-auto;
     }
+  }
+
+  .card {
+    @apply p-8 mb-4 rounded-lg;
   }

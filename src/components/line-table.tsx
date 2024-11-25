@@ -16,7 +16,7 @@ const LineTable = ({ data }: { data: CustomerOrderDetail[] }) => {
           <thead>
             <tr>
               {linesHeaders.map((header, index) => (
-                <th key={index} className="text-left">
+                <th key={index} className="text-left main-table">
                   {header}
                 </th>
               ))}

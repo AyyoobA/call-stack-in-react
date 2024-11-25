@@ -1,4 +1,5 @@
-import { CustomerOrderDetail, Metadata } from "../dto/data-types";
+import { CustomerOrderDetail, FactoryPayableTrace, Metadata } from "../dto/data-types";
+import FactoryPayableTraceMetaData from "./FactoryPayableTraceMetaData";
 
 const MetaDataInformation = ({ data }: { data: CustomerOrderDetail[] }) => {
   const dataObj: Metadata = data[0]?.metadata;
@@ -25,25 +26,14 @@ const MetaDataInformation = ({ data }: { data: CustomerOrderDetail[] }) => {
                     <th className="font-semibold">{header}</th>
                     <td>{value?.toString() || ""}</td>
                   </tr>
-                ); 
+                );
               }
-            })}
-            {headers.map((header, index) => {
-              const value = dataObj[header[0] as keyof Metadata];
-              
-              // Check if the value is an object
-              if (Array.isArray(value)) {
-                console.log(value)
-                return (
-                  <tr key={index}>
-                    <td className="font-semibold">{header}</td>
-                    <td>{value?.toString() || ""}</td>
-                  </tr>
-                ); 
-              }
-            })}
+            })} 
           </tbody>
         </table>
+        {/* <div className="mt-8 mb-5">
+          <FactoryPayableTraceMetaData data={factoryPayableTrace}/>
+        </div> */}
       </div>
     </div>
   );
